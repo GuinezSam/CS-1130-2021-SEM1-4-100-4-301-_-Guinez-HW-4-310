@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Factorial Calculator</h3>
+
+<form>
+<div>
+  <label for="F">Number:</label>
+  <input type="number" id="N" oninput="func()"value="">
+  <input type="reset" value="Reset">
+<div>
+</form>
+<p id="demo"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<script type="text/javascript"> 
+function func()
+{
+	var number = document.getElementById("N").value;
+    var fact = 1;
+    var i = 1;
+    while(i<=number)
+    {
+      var fact = fact * i;
+      var i = i+1;
+    }
+    
+    var snn = 0
+    do
+    {
+      var i = i-1
+      var snn=snn+i
+    }
+    while(i>=1)
+    
+    for(i; i<number;i++)
+    {
+    	;
+    }
+    var ann = snn/i
+    
+    if (number==0)
+    {
+    	var fact = "";
+        var snn = "";
+        var ann = "";
+    }
+    
+    
+	document.getElementById("demo").innerHTML = "nth factorial: "+ fact
+    document.getElementById("demo2").innerHTML = "sum of the first n numbers :"+ snn
+    document.getElementById("demo3").innerHTML = "average of the first n numbers :"+ ann
+}
+</script>
+
+
+</body>
+</html>
