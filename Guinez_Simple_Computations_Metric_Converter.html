@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Metric Converter</h1>
+<p>How to use: select => Add input => reset(optional)</p>
+
+<form>
+  <div>
+  <label for="metric">Convert</label>
+  <select name="metric" id="metric">
+  	  <option value="non">--select--</option>	
+      <option value="c2f">C° to F°</option>
+      <option value="f2c">F° to C°</option>
+      <option value="m2ft">MTR to FT</option>
+      <option value="ft2m">FT to MTR</option>
+  </select>
+  <br><br>
+  <input type="number" id="mv" oninput="func()">
+  <input type="reset" value="Reset">
+  </div>
+</form>
+
+
+
+
+<p id="demo"></p>
+
+
+<script type="text/javascript">
+
+function func()
+{
+	var A = document.getElementById("mv").value*1;
+	var I = document.getElementById("metric").value=="c2f";
+    var I1 = document.getElementById("metric").value=="f2c";
+    var I2 = document.getElementById("metric").value=="m2ft";
+    var I3 = document.getElementById("metric").value=="ft2m";
+	if (I==true)
+    {
+    	let num = (A * (9/5)) + 32;
+        let n = num.toFixed(2);
+    	document.getElementById("demo").innerHTML = n+ " F°" 
+    }
+	else if (I1==true)
+    {
+    	let num = (A - 32) * (5/9);
+        let n = num.toFixed(2);
+    	document.getElementById("demo").innerHTML = n +" C°"
+    }
+	else if (I2==true)
+    {
+    	let num = A * 3.281;
+        let n = num.toFixed(2);
+    	document.getElementById("demo").innerHTML = n +" M"
+    }
+   	else if (I3==true)
+    {
+    	let num = A / 3.281;
+        let n = num.toFixed(2);
+    	document.getElementById("demo").innerHTML = n +" M"
+    }
+
+
+}
+</script>
+</body>
+</html>
