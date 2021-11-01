@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Income Tax Calculator Program (PH)</h3>
+
+<form>
+<div>
+  <label for="tax_ca">Taxable Income</label>
+  <input type="number" id="inc" oninput="func()"value="">
+  <input type="reset" value="Reset">
+<div>
+</form>
+<p id="demo"></p>
+<p id="demo2"></p>
+
+
+<script type="text/javascript"> 
+function func()
+{
+	var income = document.getElementById("inc").value*1;
+    
+    if(income == "" || income <= 0)
+    {
+    	var tax = ""
+    	var taxinc = ""
+    }
+    else if(income <=250000)
+    {
+    	var taxinc = income;
+        var taxinc = taxinc.toFixed(2)
+        var tax = 0;
+    }
+    else if(income > 250000 && income <= 400000 )
+    {
+
+    	var taxinc = income - 250000;
+        var tax = taxinc*0.20;
+        var tax = tax.toFixed(2);
+        var taxinc = taxinc.toFixed(2);
+    }
+    else if(income > 400000 && income <= 800000 )
+    {
+
+    	var taxinc = income - 400000;
+        var tax = (taxinc*0.25)+30000;
+        var tax = tax.toFixed(2);
+        var taxinc = taxinc.toFixed(2);
+    }
+    else if(income > 800000 && income <= 2000000 )
+    {
+
+    	var taxinc = income - 800000;
+        var tax = (taxinc*0.30)+130000;
+        var tax = tax.toFixed(2);
+        var taxinc = taxinc.toFixed(2);
+    }
+    else if(income > 2000000 && income <= 8000000  )
+    {
+
+    	var taxinc = income - 2000000;
+        var tax = (taxinc*0.32)+490000;
+        var tax = tax.toFixed(2);
+        var taxinc = taxinc.toFixed(2);
+    }
+    else if(income > 8000000  )
+    {
+
+    	var taxinc = income - 8000000;
+        var tax = (taxinc*0.35)+2410000;
+        var tax = tax.toFixed(2);
+        var taxinc = taxinc.toFixed(2);
+    }
+    
+    document.getElementById("demo2").innerHTML = "(Php) Income Tax: "+ tax
+	
+
+
+}
+</script>
+
+
+</body>
+</html>
