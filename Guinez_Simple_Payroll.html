@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <div class="container">
+    <div class="tabl">
+      <table id="payroll" border="1">
+        <th>No.</th>
+        <th>Employee Name</th>
+        <th>Working Days</th>
+        <th>Daily Rate</th>
+        <th>Gross Pay</th>
+        <th>Total Deductions</th>
+        <th>Net Pay</th>
+      </table>
+    </div>
+
+    <div class="inp">
+      <br><br><br>
+      No. :<input type="text" name="fname" id="eno">
+      <br><br>
+      Employee Name :<input type="text" name="name" id="ename">
+      <br><br>
+      Work Days :<input type="number" name="wd" id="wday">
+      <br><br>
+      Daily Rate :<input type="number" name="dr" id="drate">
+      <br><br>
+      Deductions :<input type="number" name="dd" id="dduc"value=0>
+      <br><br>
+      <button onclick="addHtmlTableRow();">Add</button>
+      <button onclick="editHtmlTbleSelectedRow();">Edit</button>
+      <button onclick="removeSelectedRow();">Remove</button>
+    </div>
+
+    <script>            
+        var indx;
+        table = document.getElementById("payroll");
+        function checkEmptyInput()
+        {
+          var empy = false;
+          Eno = document.getElementById("eno").value;
+          Ename = document.getElementById("ename").value;
+          WD = document.getElementById("wday").value;
+          DR = document.getElementById("drate").value;
+          if(Eno === ""|| Ename === ""|| WD === ""|| DR === "")
+          {
+            alert("Complete Entries");
+            empy = true;
+          }
+          return empy;
+        }
+
+
+                  // add Row
+        function addHtmlTableRow()
+        {
+          if(!checkEmptyInput())
+          {
+            var newRow = table.insertRow(table.length);
+            cell1 = newRow.insertCell(0);
+            cell2 = newRow.insertCell(1);
+            cell3 = newRow.insertCell(2);
+            cell4 = newRow.insertCell(3);
+            cell5 = newRow.insertCell(4);
+            cell6 = newRow.insertCell(5);
+            cell7 = newRow.insertCell(6);
+
+            Eno = document.getElementById("eno").value;
+            Ename = document.getElementById("ename").value;
+            WD = document.getElementById("wday").value;
+            DR = document.getElementById("drate").value;
+            TD = document.getElementById("dduc").value;
+
+            cell1.innerHTML = Eno;
+            cell2.innerHTML = Ename;
+            cell3.innerHTML = WD;
+            cell4.innerHTML = DR;
+            cell5.innerHTML = WD * DR;
+            cell6.innerHTML = TD;
+            cell7.innerHTML = (WD * DR) - TD;
+
+            selectedRowToInput();
+          }
+        }
+        function selectedRowToInput()
+        {                
+          for(var i = 1; i < table.rows.length; i++)
+          {
+            table.rows[i].onclick = function()
+            {
+              indx = this.rowIndex;
+              document.getElementById("eno").value = this.cells[0].innerHTML;
+              document.getElementById("ename").value = this.cells[1].innerHTML;
+              document.getElementById("wday").value = this.cells[2].innerHTML;
+              document.getElementById("drate").value = this.cells[3].innerHTML;
+              document.getElementById("dduc").value = this.cells[6].innerHTML;
+            }
+          }
+        }
+        selectedRowToInput()
+        function editHtmlTbleSelectedRow()
+        {
+           Eno = document.getElementById("eno").value;
+           Ename = document.getElementById("ename").value;
+           WD = document.getElementById("wday").value;
+           DR = document.getElementById("drate").value;
+           TD = document.getElementById("dduc").value;
+          if(!checkEmptyInput())
+          {
+            table.rows[indx].cells[0].innerHTML = Eno;
+            table.rows[indx].cells[1].innerHTML = Ename;
+            table.rows[indx].cells[2].innerHTML = WD;
+            table.rows[indx].cells[3].innerHTML = DR;
+            table.rows[indx].cells[4] = WD * DR;
+            table.rows[indx].cells[5].innerHTML = TD;
+            table.rows[indx].cells[6].innerHTML = (WD * DR) - TD;
+          }
+        }
+
+        function removeSelectedRow()
+          {
+            table.deleteRow(indx);
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("age").value = "";
+			document.getElementById("eno").value = "";
+            document.getElementById("ename").value = "";
+            document.getElementById("wday").value = "";
+            document.getElementById("drate").value = "";
+            document.getElementById("dduc").value = "";
+          }
+    </script>
+  </body>
+</html>
